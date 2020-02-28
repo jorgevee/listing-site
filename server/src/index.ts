@@ -1,14 +1,11 @@
-import { listings } from "./listings";
-const express = require('express');
+import express from "express";
+import { ApolloServer } from "apollo-server-express";
+
 const app = express();
 const port = 9000;
+const server = new ApolloServer();
 
-
-app.get("/listings", (_req, res) => {
-  res.send(listings);
-});
-
-//Start Port Server
+server.applyMiddleware({ app, path: "/api" });
 app.listen(port);
 
 console.log(`[app] : http://localhost:${port}`);
