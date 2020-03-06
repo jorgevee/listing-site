@@ -1,15 +1,17 @@
 require("dotenv").config();
 
+import { ObjectId } from "mongodb";
 import { connectDatabase } from "../src/database";
+import { Listing } from "../src/lib/types";
 
 const seed = async () => {
   try {
     console.log(`[seed] : running...`);
 
     const db = await connectDatabase();
-    export const listings = [
+    export const listings: Listing[] = [
       {
-        id: "001",
+        _id: new ObjectId(),
         title:
           "Clean and fully furnished apartment. 5 min away from CN Tower",
         image:
@@ -23,10 +25,15 @@ const seed = async () => {
       }
       // ...
     ];
+
+    for (const listing of listings) {
+      await db.listings.insertOne(listing);
+    }
+
+    console.log(`[seed] : success`);
   } catch (error) {
     throw new Error("failed to seed database");
   }
 };
 
 seed();
-In our seed() function, we want the entire moc
