@@ -1,5 +1,6 @@
 import { IResolvers } from "apollo-server-express";
 import { listings } from "../listings";
+import { Database } from "../lib/types";
 
 export const resolvers: IResolvers = {
   Query: {
