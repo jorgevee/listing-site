@@ -36,7 +36,9 @@ interface Props {
 
 export const Listings = ({ title }: Props) => {
   const fetchListings = async () => {
-    const { data } = await server.fetch<ListingsData>({ query: LISTINGS });
+    const { data } = await server.fetch<ListingsData>({
+      query: LISTINGS
+    });
     console.log(data); // check the console to see the listings data from our GraphQL Request!
   };
 
@@ -56,8 +58,12 @@ export const Listings = ({ title }: Props) => {
   return (
     <div>
       <h2>{title}</h2>
-      <button onClick={fetchListings}>Query Listings!</button>
-      <button onClick={deleteListing}>Delete a listing!</button>
+      <button onClick={fetchListings}>
+        Query Listings!
+      </button>
+      <button onClick={deleteListing}>
+        Delete a listing!
+      </button>
     </div>
   );
 };
