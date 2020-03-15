@@ -10,14 +10,7 @@ export const useQuery = <TData = any>(query: string) => {
     data: null
   });
 
-  useEffect(() => {
-    const fetchApi = async () => {
-      const { data } = await server.fetch<TData>({ query });
-      setState({ data });
-    };
+  useCallback(() => {}, []);
 
-    fetchApi();
-  }, [query]);
-
-  return state;
+  // ...
 };
