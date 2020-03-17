@@ -1,5 +1,5 @@
 export const Listings = ({ title }: Props) => {
-  const { data, refetch } = useQuery<ListingsData>(LISTINGS);
+  const { data, loading, error, refetch } = useQuery<ListingsData>(LISTINGS);
 
   const deleteListing = async (id: string) => {
     await server.fetch<DeleteListingData, DeleteListingVariables>({
